@@ -68,7 +68,7 @@ public class LoginTC  {
 		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
 	}  */
 
-	 @Test(dataProvider = "users",dataProviderClass = TData.class,priority=1)
+	 @Test(dataProvider = "data-provider",dataProviderClass = TData.class,priority=1)
 public void account(String type, String username, String password) throws InterruptedException
 	 {
 
