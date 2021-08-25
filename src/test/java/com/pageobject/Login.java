@@ -57,6 +57,8 @@ public class Login{
     @FindBy(xpath="//tbody/tr[1]/td[3]/a[1]/span[1]")
     WebElement body;
     
+	@FindBy(xpath="//input[@id='c3']")
+	WebElement show_pswd;
     
    public void check_email()
    {
@@ -88,12 +90,14 @@ public class Login{
         	username.sendKeys(user);
         	next_btn.click();
         	pswd.sendKeys(pass);
+			show_pwsd.click();
         	checkPass();
         	
         next_btn1.click();
         
      
-        
+        //to check if user is entering correct credentials
+
         if(type.equals("valid")){
         	
         	String actualTitle = driver.getTitle();
@@ -108,6 +112,8 @@ public class Login{
         
         	Assert.assertEquals(actualTitle, expectedTitle,"Wrong password.Try again or click Forgot password to reset it");
         }
+			
+			check_email();
 
         }
    
@@ -120,7 +126,7 @@ public class Login{
     		for (int i = 0; i < emails.size(); i++) {
     			
     				
-    			expectedString = "Hello,this is a testng program";
+    			expectedString ;
     			String actualString= emails.get(i).getText();
     			Assert.assertEquals(actualString, expectedString);
     			
@@ -130,7 +136,7 @@ public class Login{
    
 	public void checkPass()
     {
-    	if(pswd.isSelected())
+    	if(show_pswd.isSelected())
     	{
     		System.out.println("password is visible");
 	}
